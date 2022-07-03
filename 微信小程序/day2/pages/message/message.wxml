@@ -1,0 +1,20 @@
+<view class="container1">
+  <!--pages/message/message.wxml-->
+  <!-- 1.下拉刷新事件 -->
+  <button bindtap="addCount" size="mini">消息数+1</button>
+  <view>消息数：{{count}}</view>
+  <!-- 2.上拉触底事件 -->
+  <view class="onReachBottom"></view>
+
+  <!-- 3.内嵌【wxs】 -->
+  <view>{{m1.toUpper(userName1)}}</view>
+  <wxs module="m1">
+    module.exports.toUpper = function (str) {
+      return str.toUpperCase();
+    }
+  </wxs>
+  <!-- 4.外联【wxs】 -->
+  <view>{{m2.toLower(userName2)}}</view>
+  <wxs src='../../utils/tools.wxs' module="m2"></wxs>
+  <my-test1></my-test1>
+</view>

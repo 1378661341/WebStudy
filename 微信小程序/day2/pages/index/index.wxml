@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<!-- 1.动态绑定数据 -->
+<view>{{ info }}</view>
+
+<!-- 2.动态绑定属性 -->
+<image src="{{imagePath}}" mode="heightFix"></image>
+
+<!-- 3.三元运算和算数运算 -->
+<view>{{randomNum >= 5 ? '随机数大于等于5 : ':'随机数小于5 : '}}{{ randomNum }}</view>
+<view> 生成整数：{{randomNum2*100 }}</view>
+<!-- 4.事件绑定 -->
+<view>
+  <button type="primary" bindtap="bindtapHandler">调用触摸事件</button>
+  <button type="primary" bindtap="addCount">调用数据+1事件:{{count}}</button>
+  <button type="primary" bindtap="btnHandler" data-info="事件传入参数：{{2}}">事件传入参数</button>
+  <input value="{{msg}}" bindinput="inputHandler" />
+</view>
+
+<!-- 5.条件渲染 -->
+<view>
+  <view wx:if="{{type === 1}}">【if】判断</view>
+  <view wx:elif="{{type === 2}}">【elif】判断</view>
+  <view wx:else>【else】判断</view>
+  <block wx:if="{{false}}">
+    <view> view1 </view>
+    <view> view2 </view>
+  </block>
+  <view hidden="{{flag}}">【hidden】能隐藏元素，并且会渲染标签</view>
+</view>
+
+<!-- 6.列表渲染 -->
+<view wx:for="{{array}}" wx:key="id">
+  索引是{{index}}，项目是{{item.name}}
+</view>
+
+<!-- 7.声明式导航 -->
+<navigator url="/pages/home/home" open-type="switchTab">跳转到【TabBar页面】</navigator>
+<!-- <navigator url="/pages/logs/logs?name=zs&age=20" open-type="navigate">跳转到非【TabBar页面】</navigator> -->
+<navigator url="/pages/logs/logs?name=zs&age=20">跳转到非【TabBar页面】</navigator>
+<!-- 8.编程式导航 -->
+<button bindtap="gotoMessage">编程式【TabBar页面】：消息页面</button>
+<button bindtap="gotoLogs">编程式非【TabBar页面】</button>

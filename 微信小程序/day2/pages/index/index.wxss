@@ -1,0 +1,3 @@
+/**index.wxss**/
+/* 7.[@import]导入样式表 */
+@import "/common/common.wxss";

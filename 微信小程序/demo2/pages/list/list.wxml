@@ -1,0 +1,70 @@
+<!-- 1.普通视图 -->
+<view class="container1">
+  <view>A</view>
+  <view>B</view>
+  <view>C</view>
+</view>
+
+<!-- 2.滚动视图 -->
+<view>
+  <scroll-view class="container2" scroll-y>
+    <view>A</view>
+    <view>B</view>
+    <view>C</view>
+  </scroll-view>
+</view>
+
+<!-- 3.轮播图 -->
+<view>
+  <swiper class="container3" indicator-dots indicator-color="white" indicator-active-color="blue" autoplay interval="1000" circular>
+    <swiper-item>
+      <view class="item">A</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="item">B</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="item">C</view>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+<!-- 4.文本长按选中 -->
+<view>
+  长按选中手机号：
+  <text selectable>1785856647</text>
+</view>
+
+<!-- 5.富文本标签识别HMTL语法字符串 -->
+<view>
+  <rich-text nodes="<h1 style='color:red'>标题h1</h1>"></rich-text>
+</view>
+
+<!-- 6.按钮标签 -->
+<view>
+  <view>--------------------不同类型的按钮--------------------</view>
+  <button>默认按钮</button>
+  <button type="primary">主色调按钮</button>
+  <button type="warn">警告按钮</button>
+  <view>---------------小尺寸的按钮,会从左开始排列---------</view>
+  <button type="primary" size="mini">主色调按钮</button>
+  <view>--------------------背景镂空的按钮--------------------</view>
+  <button type="primary" size="mini" plain>背景镂空小按钮</button>
+  <button type="primary" plain>背景镂空大按钮</button>
+</view>
+
+<!-- 7.图片标签 -->
+<view>
+  <image></image>
+  <view>会失真</view>
+  <image src="/images/logo.jpg" />
+  <view>会有留白</view>
+  <image src="/images/logo.jpg" mode="aspectFit" />
+  <view>会裁剪</view>
+  <image src="/images/logo.jpg" mode="aspectFill" />
+  <view>高度会自适应地变化</view>
+  <image src="/images/logo.jpg" mode="widthFix" />
+  <view>宽度自适应地变化</view>
+  <image src="/images/logo.jpg" mode="heightFix" />
+</view>

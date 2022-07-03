@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- id是app的标签，会被vue渲染的区域 -->
+    <div id='app'>
+        <!-- 1.渲染内容指令 -->
+        <p v-text='username'>1.文字会被v-text的值给覆盖</p>
+        <p>1.名字：{{ username }}</p>
+        <span v-html='discription'></span>
+        <!-- 2.属性绑定指令 -->
+        <!-- placeholder属性代表预期值的提示信息 -->
+        <input type="text" :placeholder="tips+'字符串'">
+        <!-- 3.事件绑定指令 -->
+        <p>3.count值是：{{count}}</p>
+        <!-- 4.绑定点击事件 -->
+        <button @click="addCount(1,$event)">4.+1</button>
+        <!-- 5.事件修饰符 -->
+        <div>
+            <a href="https://www.baidu.com" @click.prevent="show">5.www.baiodu.com</a>
+        </div>
+        <!-- 6.数据双向绑定指令 -->
+        <div>
+            <input type="text" v-model="username" :placeholder="tips+'字符串'">
+            <br>
+            <select v-model="city">
+                <option value="1">北京</option>
+                <option value="2">上海</option>
+                <option value="3">广州</option>
+            </select>
+        </div>
+        <!-- 7.条件渲染指令 -->
+        <input type="text" v-if="falg" placeholder="v-if">
+        <input type="text" v-show="!falg" placeholder="v-show">
+        <br>
+        <input type="text" v-if="type === 'A'">
+        <input type="text" v-else-if="type === 'B'" placeholder="v-else-if[B]">
+        <input type="text" v-else="type === 'D'" placeholder="v-else-if[D]">
+        <!-- 7.条件渲染指令 -->
+        <div>
+            <ul>
+                <li v-for="items in list">id是{{items.id}},姓名是{{items.name}}</li>
+            </ul>
+        </div>
+        <!-- 8.过滤器 -->
+        <p>message的值：{{message|capi}}</p>
+        <p>{{time|dateFormat}}</p>
+        <!-- 9.侦听器 -->
+        <input type="text" v-model="watchData">
+        <input type="text" v-model="watchObjData">
+        <input type="text" v-model="info.watchObjData">
+        <br>
+        <br>
+        <!-- 10.计算属性 -->
+        <div>
+            <label>R:<input type="text" v-model.number="r"></label>
+            <label>G:<input type="text" v-model.number="g"></label>
+            <label>B:<input type="text" v-model.number="b"></label>
+            <span :style="{backgroundColor:rgb}">{{rgb}}</span>
+        </div>
+    </div>
+    <!-- 内联方式引入vue库文件，就能够使用Vue构造函数了 -->
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <!-- 【dayjs】库文件的导入，可以格式化日期 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.4.1/dayjs.min.js"></script>
+    <!-- 【axios】库文件的导入，可以发请求 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        //全局过滤器
+        Vue.filter("dateFormat", (time) => {
+            //格式化日期：YYYY-MM-DD
+            const dtstr = dayjs(time).format('YYYY-MM-DD HH:mm:ss');
+            return dtstr;
+        })
+        //创建vue实例对象。
+        const vm = new Vue({
+            //el是代表控制显示页面上标签的哪一块区域
+            //【#app】代表id是app的标签
+            el: '#app',
+            //生命周期函数：挂载数据时
+            mounted() {
+                this.nowTime();
+                this.request();
+            },
+            //页面上需要渲染的数据
+            data: {
+                username: 'linll',
+                discription: '<h4 style="color: red; font-weight: bold;">1.红色加粗字体<h4>',
+                tips: "2.默认值",
+                count: 0,
+                city: "0",
+                falg: false,
+                type: "1",
+                list: [{ id: '1', name: 'aa' }, { id: '2', name: 'bb' }, { id: '3', name: 'cc' }],
+                message: "hello",
+                time: "",
+                watchData: "",
+                watchObjData: "",
+                info: {
+                    watchObjData: "123"
+                },
+                r: 0,
+                g: 0,
+                b: 0
+            },
+            //事件处理函数
+            methods: {
+                addCount(n, e) {
+                    console.log(e);
+                    this.count += n;
+                    if (this.count % 2 === 0) {
+                        e.target.style.backgroundColor = "red";
+                    } else {
+                        e.target.style.backgroundColor = '';
+                    }
+                },
+                show() {
+                    console.log('不会跳转');
+                },
+                nowTime() {
+                    setInterval(() => {
+                        this.time = new Date();
+                    })
+                },
+                async request() {
+                    //解构赋值中的【:】冒号可以重命名
+                    let {data:res} = await axios({
+                        methods: 'GET',
+                        //methods: 'POST',
+                        url:'http://www.liulongbin.top:3006/api/getbooks',
+                        //URL的查询参数
+                        params:{
+                            id:1
+                        }
+                        //post情况下的请求体参数
+                        // data:{
+                        //     name:'zs',
+                        //     age:'20'
+                        // }
+                    }).then((res)=>{
+                        console.log(res.data);
+                        return res;
+                    })
+                    console.log(res);
+                    //axios.get()
+                    const {data:getRes} = await axios.get('http://www.liulongbin.top:3006/api/getbooks',{
+                        //查询参数
+                        params:{id:1}
+                    })
+                    console.log("get:",getRes);
+                    //axios.post('url',{请求体数据})
+                    const {data:postRes} = await axios.post('http://www.liulongbin.top:3006/api/post',{
+                        name:'zs',
+                        age:'20'
+                    })
+                    console.log("post:",postRes);
+
+
+
+
+
+                }
+            },
+            //过滤器函数节点
+            filters: {
+                capi(message) {
+                    //首字母变大写
+                    const first = message.charAt(0).toUpperCase();
+                    const other = message.slice(1);
+                    return first + other;
+                }
+            },
+            computed: {
+                rgb() {
+                    return `rgb(${this.r},${this.g},${this.b})`;
+                }
+            },
+            watch: {
+                //newVal:变化后的数据,oldVal:变化前的数据
+                watchData(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                },
+                //对象格式
+                watchObjData: {
+                    //对象格式数据的监听处理函数
+                    handler(newVal, oldVal) {
+                        //newVal:变化后的数据,oldVal:变化前的数据
+                        console.log(newVal, oldVal);
+                    },
+                    //【immediate】代表进入页面就会触发监听处理函数的设置
+                    immediate: true
+                },
+                info: {
+                    //对象格式数据的监听处理函数
+                    handler(newVal, oldVal) {
+                        //newVal:变化后的数据,oldVal:变化前的数据
+                        console.log(newVal, oldVal);
+                    },
+                    //【immediate】代表进入页面就会触发监听处理函数的设置
+                    immediate: true,
+                    //[deep:ture]代表对象的任何属性都能被监听
+                    deep: true
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

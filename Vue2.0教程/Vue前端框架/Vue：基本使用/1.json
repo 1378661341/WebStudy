@@ -1,0 +1,5 @@
+const {data:getRes} = await axios.get('http://www.liulongbin.top:3006/api/getbooks',{
+      //查询参数
+      params:{id:1}
+  })
+  console.log("get:",getRes);

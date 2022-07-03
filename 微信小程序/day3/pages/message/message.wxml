@@ -1,0 +1,6 @@
+<!--pages/message/message.wxml-->
+<text>pages/message/message.wxml</text>
+<view>
+  <!-- 1.局部引用组件 -->
+  <my-test1></my-test1>
+</view>

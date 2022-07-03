@@ -1,0 +1,6 @@
+<!--pages/contact/contact.wxml-->
+<text>pages/contact/contact.wxml</text>
+<!-- 1.全局引用组件 -->
+<view>
+  <my-test2></my-test2>
+</view>

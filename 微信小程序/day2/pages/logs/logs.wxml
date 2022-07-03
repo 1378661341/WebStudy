@@ -1,0 +1,8 @@
+<!--logs.wxml-->
+<navigator open-type="navigateBack" delta="1">后退一步导航</navigator>
+<button bindtap="navigateBack">编程式后退导航</button>
+<view class="container log-list">
+  <block wx:for="{{logs}}" wx:key="timeStamp" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log.date}}</text>
+  </block>
+</view>

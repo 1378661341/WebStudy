@@ -1,0 +1,87 @@
+/* 1.普通视图 */
+.container2 {
+  border: 1px solid black;
+  display: flex;
+  width: 100px;
+  height: 120px;
+  justify-content: space-around;
+}
+
+.container1 view {
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.container1 view:nth-child(1) {
+  background-color: lightgreen;
+
+}
+
+.container1 view:nth-child(2) {
+  background-color: lightskyblue;
+
+}
+
+.container1 view:nth-child(3) {
+  background-color: lightcoral;
+}
+
+.container1 {
+  display: flex;
+  /* flex-direction:row; */
+  justify-content: space-around;
+}
+
+/* <!-- 2.滚动视图 --> */
+.container2 view {
+  height: 100px;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.container2 view:nth-child(1) {
+  background-color: lightgreen;
+
+}
+
+.container2 view:nth-child(2) {
+  background-color: lightskyblue;
+
+}
+
+.container2 view:nth-child(3) {
+  background-color: lightcoral;
+}
+
+/* 3.轮播图 */
+.container3 {
+  height: 150px;
+}
+
+.container3 .item {
+  height: 100%;
+  line-height: 100px;
+  text-align: center;
+}
+
+swiper-item:nth-child(1) .item {
+  background-color: lightgreen;
+
+}
+
+swiper-item:nth-child(2) .item {
+  background-color: lightskyblue;
+
+}
+
+swiper-item:nth-child(3) .item {
+  background-color: lightcoral;
+}
+
+/* 7.图片标签 */
+image {
+  border: 1px solid black;
+}

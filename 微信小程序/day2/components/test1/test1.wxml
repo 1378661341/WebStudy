@@ -1,0 +1,23 @@
+<!--components/test1/test1.wxml-->
+<!-- 1.【observers】组件的监听器 -->
+<view>
+  <view>监听数据【n1】+【n2】:{{sum}}</view>
+  <button bindtap="addN1">【n1】+1</button>
+  <button bindtap="addN2">【n2】+1</button>
+</view>
+<!-- 2.【slot】组件的插槽 -->
+<!-- <slot></slot> -->
+<slot name="slotName1"></slot>
+<view>插槽分割线</view>
+<slot name="slotName2"></slot>
+<!-- 3.自定义属性值传递 -->
+<view>子组件的自定义属性值：{{childCount}}</view>
+<button bindtap="addChildCount">子组件的自定义属性值+1</button>
+<view>6.获取【behaviors】的数据~~~~~~~~~~~~~~~~</view>
+<view>【behaviors】的数据:{{userName}}</view>
+<view>7.全局数据共享~~~~~~~~~~~~~~~~</view>
+<view>{{numA}}+{{numB}}={{sum}}</view>
+<view>
+  <van-button type="primary" bindtap="btnHandler2" data-step="{{1}}">numB+1</van-button>
+  <van-button type="danger" bindtap="btnHandler2" data-step="{{-1}}">numB-1</van-button>
+</view>

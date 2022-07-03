@@ -1,0 +1,19 @@
+<!--pages/home/home.wxml-->
+<button bindtap="getInfo">发起get请求</button>
+<button bindtap="postInfo">发起post请求</button>
+<view>1.数据监听器~~~~~~~~~~~~~~~~</view>
+<my-test1></my-test1>
+<view>2.插槽~~~~~~~~~~~~~~~~</view>
+<my-test1>
+  <!-- <view>插槽的内容</view> -->
+  <view slot="slotName1">插槽的内容[slotName1]</view>
+  <view slot="slotName2">插槽的内容[slotName2]</view>
+</my-test1>
+<view>3.属性绑定~~~~~~~~~~~~~~~~</view>
+<my-test1 childCount="{{count}}"></my-test1>
+<view>4.事件绑定~~~~~~~~~~~~~~~~</view>
+<my-test1 bind:viewCount="homeCount"></my-test1>
+<view>父组件接受到的值:{{count}}</view>
+<view>5.获取子组件的实例~~~~~~~~~~~~~~~~</view>
+<my-test1 class="my-test1"></my-test1>
+<button bindtap="getMytest1">获取实例按钮</button>

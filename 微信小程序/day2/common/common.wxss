@@ -1,0 +1,8 @@
+/* 输入框的样式美化 */
+input {
+  border: 1px solid #eee;
+  padding: 5px;
+  margin: 5px;
+  /* 边框圆角 */
+  border-radius: 3px;
+}

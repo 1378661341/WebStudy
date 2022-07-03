@@ -1,0 +1,8 @@
+<!--pages/contact/contact.wxml-->
+<!-- 1.全局数据共享 -->
+<view>{{numA}}+{{numB}}={{sum}}</view>
+<view>
+  <van-button type="primary" bindtap="btnHandler1" data-step="{{1}}">numA+1</van-button>
+  <van-button type="danger" bindtap="btnHandler1" data-step="{{-1}}">numA-1</van-button>
+</view>
+<my-test1></my-test1>
