@@ -1,0 +1,20 @@
+{
+  "name": "echarts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "echarts": "^5.3.3",
+    "koa": "^2.13.4",
+    "ws": "^8.8.1"
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.js"></script>
+</head>
+
+<body>
+  <div id="main" style="width:600px;height:200px;"></div>
+</body>
+<script>
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+  // 绘制图表
+  myChart.setOption({
+    title: {
+      text: 'ECharts 入门示例'
+    },
+    //提示框组件
+    tooltip: {
+      //提示框出现位置:数据项图形内出现/数据项的坐标轴内出现
+      //trigger: 'item'/'axis',
+      //提示框触发的条件:鼠标点击
+      //triggerOn: 'click'
+      //提示框的【内容的格式】更改
+      //formatter: `系列名称:{a},类目值:{b},数值{c}`
+      //提示框的【内容】更改
+      formatter: () => { return '提示框的内容' }
+    },
+    toolbox: {
+      //是否显示工具栏组件
+      show: true,
+      feature: {
+        dataZoom: {
+          yAxisIndex: "none"
+        },
+        dataView: {
+          readOnly: false
+        },
+        magicType: {
+          type: ["line", "bar"]
+        },
+        //还原
+        restore: {},
+        //保存为图片
+        saveAsImage: {}
+      }
+    },
+    xAxis: {
+      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: '销量',
+        type: 'bar',
+        data: [5, 20, 36, 10, 10, 20]
+      }
+    ]
+  });
+</script>
+
+</html>
